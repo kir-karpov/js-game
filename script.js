@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 function playGuessingGame() {
-  const maxAttempts = 10; 
+  const maxAttempts = 10;
   let attemptsLeft = maxAttempts;
   let secretNumber = generateSecretNumber();
 
@@ -15,11 +15,21 @@ function playGuessingGame() {
     if (userNumber === null) {
       alert("Игра окончена");
       return;
-    } else if (isNaN(userNumber)) {
+    }
+
+    if (isNaN(userNumber)) {
       alert("Введи число!");
-    } else if (userNumber < 1 || userNumber > 100) {
+      askNumber();
+      return;
+    }
+
+    if (userNumber < 1 || userNumber > 100) {
       alert("Число должно быть от 1 до 100");
-    } else if (userNumber < secretNumber) {
+      askNumber();
+      return;
+    }
+
+    if (userNumber < secretNumber) {
       alert(`Загаданное число больше. Осталось попыток: ${--attemptsLeft}`);
     } else if (userNumber > secretNumber) {
       alert(`Загаданное число меньше. Осталось попыток: ${--attemptsLeft}`);
